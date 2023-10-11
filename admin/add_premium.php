@@ -1,11 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "boombet";
-
-// Create a connection
-$connection = new mysqli($servername, $username, $password, $database);
+include 'connection.php';
 
 $League = "";
 $Teams = "";
