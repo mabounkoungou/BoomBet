@@ -1,15 +1,12 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "boombet";
+$host = "sql301.infinityfree.com";
+$username = "if0_35122151_boombet";
+$password = "rrbfKXLmBIJI";
+$database = "if0_35211532_boombet";
 
-// Create a connection
-$connection = new mysqli($servername, $username, $password, $database);
+$con = mysqli_connect($host, $username, $password, $database);
 
-// Check if the connection is successful
-if ($connection->connect_error) {
-    die("Connection failed: " . $connection->connect_error);
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
 }
-
 ?>
