@@ -1,6 +1,7 @@
 <?php
 // Include your database connection code from "connection.php"
 require "connection.php";
+require_once("email-config.php");
 
 // Check if the connection was successful in "connection.php"
 if (!$con) {

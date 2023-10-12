@@ -6,8 +6,7 @@ function handlePayment() {
     currency: "GHS",
     ref: "" + Math.floor(Math.random() * 1000000000 + 1),
     onClose: function () {
-      window.location =
-        "https://localhost/BoomBet/payment.php?transaction=cancel";
+      window.location = "BoomBet/payment.php?transaction=cancel";
       alert("Transaction Cancelled.");
     },
     callback: function (response) {

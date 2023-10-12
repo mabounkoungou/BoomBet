@@ -1,5 +1,5 @@
 <?php
-$host = "localhost";
+$host = "st";
 $username = "root";
 $password = "";
 $database = "boombet";
