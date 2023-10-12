@@ -223,9 +223,11 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.php" data-toggle="tooltip" title="Home-Page"
                             data-placement="bottom">Home</a></li>
-                    <li><a href="#" data-toggle="tooltip" title="Free odds" data-placement="bottom">Free Daily
+                    <li><a href="free_pre.php" data-toggle="tooltip" title="Free odds" data-placement="bottom">Free
+                            Daily
                             odds</a></li>
-                    <li><a href="#" data-toggle="tooltip" title="Winning is Guaranteed" data-placement="bottom">Premium
+                    <li><a href="premium.php" data-toggle="tooltip" title="Winning is Guaranteed"
+                            data-placement="bottom">Premium
                             Odds</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" data-placement="bottom">
