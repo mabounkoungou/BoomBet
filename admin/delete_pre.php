@@ -3,11 +3,11 @@ include 'connection.php';
 
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    $sql = "DELETE FROM premium_predictions WHERE id = $id";
+    $sql = "DELETE FROM betting_code WHERE id = $id";
     $connection->query($sql);
 
     // Redirect to the appropriate page after deleting the record
-    header("location: premium_prediction.php");
+    header("location: code.php");
     exit;
 }
 

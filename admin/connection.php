@@ -1,8 +1,8 @@
 <?php
-$servername = "host";
-$username = "root";
-$password = "";
-$database = "boombet";
+$servername = "fdb34.awardspace.net";
+$username = "4072335_boombet";
+$password = "Gr5XYRMj@7TEDRr";
+$database = "4072335_boombet";
 
 // Create a connection
 $connection = new mysqli($servername, $username, $password, $database);

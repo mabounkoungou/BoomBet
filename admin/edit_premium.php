@@ -2,49 +2,46 @@
 include 'connection.php';
 
 
-$League = "";
-$Teams = "";
-$Tips = "";
-$Result = "";
+$Sporty = "";
+$Betway = "";
+
 $errorMessage = "";
 $successMessage = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!isset($_GET["id"])) {
-        header("location:premium_prediction.php");
+        header("location:code.php");
         exit;
     }
     $id = $_GET["id"];
-    $sql = "SELECT * FROM premium_predictions WHERE id = $id";
+    $sql = "SELECT * FROM betting_code WHERE id = $id";
     $result = $connection->query($sql);
     $row = $result->fetch_assoc();
 
     if (!$row) {
-        header("location:premium_prediction.php");
+        header("location:code.php");
         exit;
     }
-    $League = $row["League"];
-    $Teams = $row["Teams"];
-    $Tips = $row["Tips"];
-    $Result = $row["Result"];
+    $League = $row["Sporty"];
+    $Betway = $row["Betway"];
+
 } else {
     if (!isset($_POST["id"])) {
-        header("location:premium_prediction.php");
+        header("location:code.php");
         exit;
     }
     $id = $_POST["id"];
-    $League = $_POST["League"];
-    $Teams = $_POST["Teams"];
-    $Tips = $_POST["Tips"];
-    $Result = $_POST["Result"];
+    $League = $_POST["Sporty"];
+    $Betway = $_POST["Betway"];
+
 
     do {
-        if (empty($League) || empty($Teams) || empty($Tips) || empty($Result)) {
+        if (empty($Sporty) || empty($Betway)) {
             $errorMessage = "All Fields are required";
             break;
         }
         $sql = "UPDATE premium_predictions " .
-            "SET League = '$League', Teams = '$Teams', Tips = '$Tips', Result = '$Result' " .
+            "SET Sporty = '$Sporty', Betway = '$Betway'" .
             "WHERE id = $id";
 
 
@@ -55,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             break;
         }
         $successMessage = "Prediction Updated Successfully";
-        header("location:premium_prediction.php");
+        header("location:code.php");
         exit;
     } while (true);
 }
@@ -68,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEW-PREMIUM</title>
+    <title>codes</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
 ">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -76,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 <body>
     <div class="container my-5">
-        <h2 class="h2 text-center">NEW PREDICTIONS</h2>
+        <h2 class="h2 text-center">NEW CODES</h2>
         <?php
         if (!empty($errorMessage)) {
             echo "
@@ -90,33 +87,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <form method="post">
             <input type="hidden" name="id" value="<?php echo $id ?>">
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">League</label>
+                <label class="col-sm-3 col-form-label">SportyBet codes</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="League" value="<?php echo $League ?>"
-                        placeholder="Enter the Leaugue e.g Premier Leaugue etc...">
+                    <input type="text" class="form-control" name="Sporty" value="<?php echo $Sporty ?>"
+                        placeholder="Enter the code e.g H25HEB4 etc...">
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Teams</label>
+                <label class="col-sm-3 col-form-label">BETWAY CODES</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="Teams" value="<?php echo $Teams ?>"
-                        placeholder="Enter the Teams e.g Livpool Vs Mancity">
+                    <input type="text" class="form-control" name="Betway" value="<?php echo $Betway ?>"
+                        placeholder="Enter the code e.g 3G563UE">
                 </div>
             </div>
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Tips</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" name="Tips" value="<?php echo $Tips ?>"
-                        placeholder="Enter the Tips e.g HOME ,DRAW, AWAY, Over 2.5, Under 0.5">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Result</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" name="Result" value="<?php echo $Result ?>"
-                        placeholder="Enter the Result Win or Lose">
-                </div>
-            </div>
+
             <?php
             if (!empty($successMessage)) {
                 echo "
@@ -134,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
                 <div class="col-sm-3 d-grid">
-                    <a class="btn btn-danger" href="premium_prediction.php" role="button">Cancel</a>
+                    <a class="btn btn-danger" href="code.php" role="button">Cancel</a>
                 </div>
             </div>
         </form>
